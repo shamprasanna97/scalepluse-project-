@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ScalePulse – Turn Your LinkedIn Profile Into a Growth Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Manrope:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --primary:#004e99; --primary-2:#0a66c2; --primary-3:#0062d2;
+  --bg:#f9f9ff; --bg-2:#f1f3ff; --bg-3:#e1e8fd; --chip:#d6e3ff;
+  --ink:#141b2b; --ink-2:#414752; --ink-3:#727783; --dark:#293040; --danger:#ba1a1a;
+  --f-head:'Plus Jakarta Sans',system-ui,sans-serif;
+  --f-body:'Manrope',system-ui,sans-serif;
+  --f-ui:'Inter',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{font-family:var(--f-body);color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.container{max-width:1280px;margin:0 auto;padding:0 48px}
+.icon{width:1em;height:1em;fill:currentColor;flex:none}
+.eyebrow{font:600 12px/16px var(--f-ui);letter-spacing:.6px;text-transform:uppercase;color:var(--primary);text-align:center}
+.eyebrow.b{font-weight:700}
+.h2{font:700 40px/48px var(--f-head);letter-spacing:-1px;color:var(--ink);text-align:center}
+.lead{font:400 16px/24px var(--f-body);color:var(--ink-2);text-align:center}
+.sec-head{max-width:672px;margin:0 auto;display:flex;flex-direction:column;gap:6.5px;padding-top:5.5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:8px;font:600 14px/20px var(--f-head);transition:transform .15s,box-shadow .15s,filter .15s}
+.btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
+.btn-primary{background:var(--primary);color:#fff;padding:14px 28px;box-shadow:0 4px 10px rgba(0,78,153,.35)}
+.btn-white{background:#fff;color:var(--ink);padding:14px 28px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+
+/* Header */
+.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 1px 8px rgba(0,0,0,.04)}
+.header .container{height:80px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:8px}
+.brand img{height:32px;width:auto}
+.brand span{font:700 20px/28px var(--f-head);letter-spacing:-.5px;color:var(--ink)}
+.nav{display:flex;gap:24px;align-items:center}
+.nav a{font:600 14px/20px var(--f-ui);color:var(--ink-2)}
+.nav a.active{font:600 16px/24px var(--f-body);color:var(--primary)}
+.nav a:hover{color:var(--primary)}
+.head-cta{display:flex;align-items:center;gap:16px}
+.dot-ic{width:32px;height:32px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font-size:12px}
+.pill{background:var(--primary-2);color:#fff;font:600 14px/20px var(--f-ui);padding:8px 24px;border-radius:9999px;box-shadow:0 4px 20px -2px rgba(11,19,32,.05);white-space:nowrap}
+
+/* Hero */
+.hero{position:relative;background:var(--bg);padding:80px 0;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:-68px;width:700px;height:500px;transform:translateX(-50%);background:rgba(214,227,255,.3);filter:blur(32px);border-radius:9999px}
+.hero-grid{position:relative;display:grid;grid-template-columns:repeat(12,1fr);gap:32px;align-items:center}
+.hero-left{grid-column:1/span 7}
+.hero-right{grid-column:8/span 5;display:flex;justify-content:flex-end}
+.badge{display:inline-flex;align-items:center;gap:8px;background:rgba(214,227,255,.6);padding:6px 14px;border-radius:9999px;box-shadow:0 1px 2px rgba(0,0,0,.05);font:600 12px/16px var(--f-ui);letter-spacing:.3px;color:var(--primary)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--primary)}
+.hero h1{font:800 56px/64px var(--f-head);letter-spacing:-1.4px;margin-top:24px}
+.grad{background:linear-gradient(90deg,#004e99,#0a66c2 50%,#0062d2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.sub{font:400 18px/29.25px var(--f-body);color:var(--ink-2);max-width:672px;margin-top:23px}
+.checks{display:grid;grid-template-columns:repeat(2,minmax(0,272px));gap:12px 32px;margin-top:24px;padding-top:8px}
+.checks div{display:flex;align-items:center;gap:10px;font:600 14px/20px var(--f-ui)}
+.checks span{width:20px;height:20px;border-radius:50%;background:var(--chip);display:grid;place-items:center;color:var(--primary);font-size:11px}
+.actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:24px;padding-top:16px}
+.proof{display:flex;align-items:center;gap:16px;padding-top:12px;margin-top:20px}
+.avatars{display:flex}
+.avatars b{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:600 12px/16px var(--f-head);box-shadow:0 0 0 2px var(--bg);margin-right:-10px}
+.avatars b:last-child{margin-right:0}
+.stars{display:flex;align-items:center;gap:4px;color:var(--primary);font-size:13px}
+.stars strong{font:700 12px/16px var(--f-head);color:var(--ink);padding-left:4px}
+.proof small{font:400 14px/20px var(--f-body);color:var(--ink-2)}
+.portrait{position:relative;width:100%;max-width:420px;aspect-ratio:1;padding:8px;border-radius:16px;background:linear-gradient(45deg,rgba(0,78,153,.1) 0%,#e9edff 50%,rgba(214,227,255,.4) 100%);box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1)}
+.portrait .ph{width:100%;height:100%;border-radius:12px;overflow:hidden;background:linear-gradient(160deg,#c9d9f7,#e9edff);box-shadow:inset 0 2px 4px rgba(0,0,0,.05)}
+.portrait .ph img{width:100%;height:100%;object-fit:cover}
+.float{position:absolute;background:rgba(255,255,255,.9);backdrop-filter:blur(6px);border-radius:12px;box-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);display:flex;align-items:center}
+.f1{top:-24px;right:-24px;gap:14px;padding:14px}
+.f2{bottom:-24px;left:-24px;gap:12px;padding:12px}
+.f3{bottom:40px;right:-32px;gap:8px;padding:8px 14px;background:var(--dark);border-radius:9999px;color:#edf0ff;font:500 12px/16px var(--f-ui);white-space:nowrap}
+.f-ic{width:40px;height:40px;border-radius:8px;display:grid;place-items:center;color:var(--primary);font-size:18px}
+.f1 small{display:block;font:600 12px/16px var(--f-ui);letter-spacing:.6px;text-transform:uppercase;color:var(--ink-2)}
+.f1 .row{display:flex;align-items:center;gap:6px}
+.f1 .row b{font:700 20px/28px var(--f-head)}
+.f1 .row span{font:600 12px/16px var(--f-ui);color:var(--primary)}
+.f2 b{display:block;font:700 14px/20px var(--f-head)}
+.f2 span{display:block;font:400 14px/20px var(--f-body);color:var(--ink-2)}
+
+/* Metrics */
+.metrics{background:var(--bg-2);padding:64px 0}
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:48px;align-items:stretch}
+.stat{padding:24px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.stat .ic{font-size:26px;color:var(--primary)}
+.stat b{display:block;font:800 48px/52px var(--f-head);letter-spacing:-1.2px}
+.stat h3{font:600 20px/28px var(--f-head);margin-top:4px}
+.stat p{font:400 14px/20px var(--f-body);color:var(--ink-2);margin-top:4px}
+.logos{margin-top:64px;text-align:center}
+.logos small{display:block;font:600 12px/16px var(--f-ui);letter-spacing:.6px;text-transform:uppercase;color:var(--ink-3);margin-bottom:24px}
+.logo-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:20px 56px;opacity:.75}
+.logo-row span{font:700 24px/32px var(--f-head);letter-spacing:-.6px;color:var(--ink)}
+.logo-row em{font-style:normal;font-weight:600;color:var(--ink-3)}
+.logo-row em.blue{color:var(--primary)}
+.forbes{font:italic 700 24px/32px 'Times New Roman',Georgia,serif;display:flex;align-items:flex-end;gap:2px}
+.forbes u{text-decoration:none;font:700 12px/16px Arial,sans-serif;text-transform:uppercase;color:var(--primary);background:var(--chip);padding:0 6px;border-radius:4px;margin-bottom:3px}
+
+/* About */
+.about{background:var(--bg);padding:80px 0}
+.about-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:48px;align-items:start}
+.about-left{grid-column:1/span 5}
+.about-right{grid-column:6/span 7;display:flex;flex-direction:column;gap:16px}
+.about-right .head{padding-bottom:16px;display:flex;flex-direction:column;gap:6.5px;padding-top:5.5px}
+.about-right .eyebrow,.about-right .h2{text-align:left}
+.pillar{display:flex;gap:20px;padding:24px;align-items:flex-start}
+.pillar .pi{width:48px;height:48px;border-radius:8px;background:var(--chip);color:var(--primary);display:grid;place-items:center;font-size:22px;flex:none}
+.pillar h4{font:700 20px/28px var(--f-head)}
+.pillar p{font:400 16px/24px var(--f-body);color:var(--ink-2);margin-top:4px}
+.why{background:var(--bg-2);border-radius:16px;padding:32px;box-shadow:0 1px 1px rgba(0,0,0,.05);display:flex;flex-direction:column;gap:24px}
+.why .eyebrow{text-align:left}
+.why h3{font:700 32px/40px var(--f-head)}
+.why > p{font:400 16px/24px var(--f-body);color:var(--ink-2)}
+.cred{display:flex;flex-direction:column;gap:12px;padding-top:8px}
+.cred div{background:#fff;border-radius:8px;padding:12px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 1px rgba(0,0,0,.05);font:600 14px/20px var(--f-ui)}
+.cred .icon{font-size:20px;color:var(--primary)}
+.why .btn{width:100%;padding:12px}
+
+/* Lead magnet */
+.lead-sec{background:var(--bg-2);padding:64px 216px}
+.lead-card{background:#fff;border-radius:16px;padding:48px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center;text-align:center}
+.lead-card .eyebrow{padding-bottom:8px}
+.lead-card .h2{max-width:560px}
+.lead-card .lead{font-size:18px;line-height:28px;max-width:576px;padding-top:8px}
+form{width:100%;max-width:576px;margin-top:32px;display:flex;flex-direction:column;gap:16px;text-align:left}
+.row2{display:flex;gap:16px}
+.row2 > *{flex:1;min-width:0}
+.input{width:100%;height:48px;background:var(--bg-2);border:1px solid transparent;border-radius:8px;padding:0 16px;font:400 16px var(--f-body);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.05);outline:none;transition:border-color .15s,box-shadow .15s}
+.input::placeholder{color:var(--ink-3)}
+.input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(0,78,153,.15)}
+.submit{height:48px;background:var(--primary);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:8px;font:600 14px/20px var(--f-head);box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);transition:filter .15s}
+.submit:hover{filter:brightness(1.08)}
+.submit:disabled{opacity:.7;cursor:progress}
+.msg{display:none;padding:12px 16px;border-radius:8px;font:500 14px/20px var(--f-ui);text-align:center}
+.msg.ok{display:block;background:#e3f6e8;color:#14612b}
+.msg.err{display:block;background:#fde8e8;color:#9b1c1c}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 24px;padding-top:40px}
+.trust span{display:flex;align-items:center;gap:6px;font:600 12px/16px var(--f-ui);color:var(--ink-2)}
+.trust .icon{font-size:13px;color:var(--primary)}
+
+/* Offer */
+.offer{position:relative;background:var(--dark);padding:80px 152px;overflow:hidden}
+.offer::before{content:"";position:absolute;left:45%;right:25%;top:-96px;height:384px;background:rgba(10,102,194,.2);filter:blur(32px);border-radius:9999px}
+.offer-card{position:relative;background:rgba(220,226,247,.1);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:16px;padding:48px;box-shadow:0 25px 50px -12px rgba(0,0,0,.25);display:flex;align-items:center;justify-content:space-between;gap:48px}
+.offer-left{max-width:576px;display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+.tag{background:var(--primary-2);color:#fff;font:600 12px/16px var(--f-ui);padding:4px 14px;border-radius:9999px}
+.offer h2{font:800 40px/48px var(--f-head);letter-spacing:-1px;color:#edf0ff}
+.offer-left > p{font:400 18px/28px var(--f-body);color:rgba(220,226,247,.8)}
+.offer ul{list-style:none;display:flex;flex-direction:column;gap:10px;padding-top:8px}
+.offer li{display:flex;gap:10px;align-items:center;font:400 16px/24px var(--f-body);color:#edf0ff}
+.offer li .icon{font-size:16px;color:#a8c8ff}
+.price{background:#fff;border-radius:12px;padding:24px;width:264px;flex:none;box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);display:flex;flex-direction:column;align-items:center;text-align:center}
+.price small{font:600 12px/16px var(--f-ui);letter-spacing:.6px;text-transform:uppercase;color:var(--ink-3)}
+.amt{display:flex;align-items:baseline;gap:8px;padding:8px 0}
+.amt b{font:800 48px/52px var(--f-head);color:var(--primary)}
+.amt s{font:400 16px/24px var(--f-body);color:var(--ink-3)}
+.price > span{font:400 14px/20px var(--f-body);color:var(--ink-2);padding-bottom:16px}
+.count{background:var(--bg-2);border-radius:8px;padding:12px;width:100%;margin-bottom:20px}
+.count small{display:block;text-transform:none;letter-spacing:0;color:var(--ink-3)}
+.count b{display:block;font:700 20px/28px 'Liberation Mono',ui-monospace,Menlo,Consolas,monospace;letter-spacing:2px;color:var(--danger)}
+.price .btn{width:100%;background:var(--primary-2);color:#fff;padding:14px 0;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)}
+.instant{display:flex;align-items:center;gap:4px;margin-top:12px;font:400 14px/20px var(--f-body);color:var(--ink-3)}
+.instant .icon{font-size:12px}
+
+/* Process */
+.process{background:var(--bg);padding:80px 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:64px;align-items:stretch}
+.step{background:var(--bg-2);border-radius:12px;padding:24px;box-shadow:0 1px 1px rgba(0,0,0,.05)}
+.step .n{width:40px;height:40px;border-radius:50%;background:var(--primary);color:#fff;display:grid;place-items:center;font:700 14px/20px var(--f-head);margin-bottom:16px}
+.step h3{font:700 20px/28px var(--f-head)}
+.step p{font:400 16px/24px var(--f-body);color:var(--ink-2);padding-top:8px}
+
+/* Testimonials */
+.testi{background:var(--bg-2);padding:80px 0}
+.t-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;margin-top:64px}
+.review{background:#fff;border-radius:16px;padding:32px;box-shadow:0 1px 1px rgba(0,0,0,.05);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.review .stars{gap:0;font-size:16.667px}
+.review blockquote{font:500 18px/29.25px var(--f-body);margin-top:15px}
+.who{display:flex;align-items:center;gap:12px}
+.who i{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 20px/28px var(--f-head);font-style:normal}
+.who b{display:block;font:700 14px/20px var(--f-head)}
+.who span{display:block;font:400 14px/20px var(--f-body);color:var(--ink-2)}
+
+/* FAQ */
+.faq{background:var(--bg);padding:80px 0}
+.faq-wrap{max-width:896px;margin:0 auto;padding:0 24px}
+.faq-list{display:flex;flex-direction:column;gap:16px;margin-top:64px}
+.faq-item{background:#fff;border-radius:12px;box-shadow:0 1px 2px rgba(0,0,0,.05);overflow:hidden}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px;text-align:left;font:600 20px/28px var(--f-head);color:var(--ink)}
+.faq-q .icon{width:12px;height:12px;color:var(--ink-2);transition:transform .25s}
+.faq-item.open .faq-q .icon{transform:rotate(180deg)}
+.faq-a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .25s ease}
+.faq-item.open .faq-a{grid-template-rows:1fr}
+.faq-a > div{overflow:hidden}
+.faq-a p{padding:0 24px 24px;font:400 16px/24px var(--f-body);color:var(--ink-2)}
+
+/* Final CTA */
+.final{background:var(--bg-3);padding:80px 0}
+.final .box{max-width:1024px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;text-align:center}
+.final .eyebrow{padding-bottom:8px}
+.final h2{font:800 36px/44px var(--f-head);letter-spacing:-.9px;max-width:672px}
+.final .lead{font-size:18px;line-height:28px;max-width:576px;padding-top:16px}
+.final .btn{margin-top:32px;padding:16px 32px;font-size:20px;line-height:28px;background:var(--primary);color:#fff;box-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1)}
+.final small{display:block;font:400 14px/20px var(--f-body);color:var(--ink-2);padding-top:16px}
+
+/* Footer */
+.footer{background:var(--bg-2);padding:64px 0}
+.footer .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.footer .brand img{height:28px}
+.footer .brand span{font:600 20px/28px var(--f-head);letter-spacing:0}
+.footer p{font:400 14px/20px var(--f-body);color:var(--ink-2);text-align:right}
+
+/* Responsive */
+@media (max-width:1100px){
+  .lead-sec{padding:64px 48px}
+  .offer{padding:80px 48px}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .nav{gap:16px}
+}
+@media (max-width:960px){
+  .nav{display:none}
+  .hero-grid,.about-grid{display:flex;flex-direction:column;align-items:stretch}
+  .hero-right{justify-content:center;padding:24px 24px 24px}
+  .about-left{order:2}
+  .about-right{order:1}
+  .offer-card{flex-direction:column;align-items:stretch}
+  .offer-left{max-width:none}
+  .price{width:100%;max-width:360px;margin:0 auto}
+}
+@media (max-width:768px){
+  .container{padding:0 20px}
+  .hero{padding:48px 0 64px}
+  .hero h1{font-size:40px;line-height:46px;letter-spacing:-1px}
+  .hero p.sub{font-size:16px;line-height:26px}
+  .h2{font-size:30px;line-height:38px}
+  .t-grid{grid-template-columns:1fr}
+  .lead-sec{padding:48px 20px}
+  .lead-card{padding:32px 20px}
+  .row2{flex-direction:column}
+  .offer{padding:56px 20px}
+  .offer-card{padding:28px 20px;gap:32px}
+  .offer h2{font-size:32px;line-height:40px}
+  .about,.process,.testi,.faq,.final{padding:56px 0}
+  .why h3{font-size:26px;line-height:34px}
+  .faq-q{font-size:17px;line-height:24px;padding:20px}
+  .faq-a p{padding:0 20px 20px}
+  .final h2{font-size:28px;line-height:36px}
+  .final .btn{font-size:16px;padding:14px 22px}
+  .footer .container{flex-direction:column;text-align:center}
+  .footer p{text-align:center}
+  .pill{padding:8px 16px}
+  .dot-ic{display:none}
+  .brand span{font-size:18px}
+}
+@media (max-width:560px){
+  .stat-grid,.steps{grid-template-columns:1fr}
+  .checks{grid-template-columns:1fr}
+  .f1{right:-8px}.f2{left:-8px}.f3{right:-8px}
+  .hero-right{padding:24px 12px}
+  .f3{font-size:11px}
+  .actions .btn{width:100%}
+  .pillar{flex-direction:column;gap:14px}
+  .brand img{height:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 12 9"><path d="M1.5 4.6l3 3L10.5 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V6a2 2 0 00-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></symbol>
+    <symbol id="i-verified" viewBox="0 0 24 24"><path d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72l-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V10a2 2 0 00-2-2zm-6 9a2 2 0 110-4 2 2 0 010 4zm3.1-9H8.9V6a3.1 3.1 0 016.2 0v2z"/></symbol>
+    <symbol id="i-checkc" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></symbol>
+    <symbol id="i-person" viewBox="0 0 24 24"><path d="M12 12a4 4 0 100-8 4 4 0 000 8zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></symbol>
+    <symbol id="i-people" viewBox="0 0 24 24"><path d="M16 11a3 3 0 100-6 3 3 0 000 6zm-8 0a3 3 0 100-6 3 3 0 000 6zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5C15 14.17 10.33 13 8 13zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17a5 5 0 110-10 5 5 0 010 10zm0-8a3 3 0 100 6 3 3 0 000-6z"/></symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></symbol>
+    <symbol id="i-speed" viewBox="0 0 24 24"><path d="M20.38 8.57l-1.23 1.85a8 8 0 01-.22 7.58H5.07A8 8 0 0115.58 6.85l1.85-1.23A10 10 0 003.35 19a2 2 0 001.72 1h13.85a2 2 0 001.74-1 10 10 0 00-.27-10.44zm-9.79 6.84a2 2 0 002.83 0l5.66-8.49-8.49 5.66a2 2 0 000 2.83z"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm0-14a6 6 0 100 12 6 6 0 000-12zm0 10a4 4 0 110-8 4 4 0 010 8zm0-6a2 2 0 100 4 2 2 0 000-4z"/></symbol>
+    <symbol id="i-brush" viewBox="0 0 24 24"><path d="M7 14c-1.66 0-3 1.34-3 3 0 1.31-1.16 2-2 2 .92 1.22 2.49 2 4 2 2.21 0 4-1.79 4-4 0-1.66-1.34-3-3-3zm13.71-9.37l-1.34-1.34a1 1 0 00-1.41 0L9 12.25 11.75 15l8.96-8.96a1 1 0 000-1.41z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z"/></symbol>
+  </defs>
+</svg>
+
+<!-- Header -->
+<header class="header">
+  <div class="container">
+    <a class="brand" href="#home">
+      <img src="https://www.figma.com/api/mcp/asset/7ab6087c-1731-4081-baa2-b2e33f5d0d8a/fbc94.png" alt="" onerror="this.style.display='none'">
+      <span>ScalePulse</span>
+    </a>
+    <nav class="nav">
+      <a class="active" href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#audit">Audit</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#faqs">FAQs</a>
+    </nav>
+    <div class="head-cta">
+      <span class="dot-ic"><svg class="icon"><use href="#i-bolt"/></svg></span>
+      <a class="pill" href="#assessment">Book Free Call</a>
+    </div>
+  </div>
+</header>
+
+<main id="home">
+
+<!-- 1. Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-left">
+      <span class="badge"><i></i>🔥 Top 1% LinkedIn Creator &amp; Executive Strategist</span>
+      <h1>Turn Your LinkedIn Profile<br>Into a <span class="grad">Growth Engine</span></h1>
+      <p class="sub">Helping founders, executives, consultants, and agency owners scale from zero visibility to high-ticket industry authority through high-performance personal branding, viral content architectures, and done-for-you growth management.</p>
+      <div class="checks">
+        <div><span><svg class="icon"><use href="#i-check"/></svg></span>Personal Brand Strategy</div>
+        <div><span><svg class="icon"><use href="#i-check"/></svg></span>Content Planning</div>
+        <div><span><svg class="icon"><use href="#i-check"/></svg></span>Content Writing</div>
+        <div><span><svg class="icon"><use href="#i-check"/></svg></span>LinkedIn Management</div>
+        <div><span><svg class="icon"><use href="#i-check"/></svg></span>Authority Building</div>
+        <div><span><svg class="icon"><use href="#i-check"/></svg></span>Audience Growth</div>
+      </div>
+      <div class="actions">
+        <a class="btn btn-primary" href="#assessment"><svg class="icon" style="font-size:15px"><use href="#i-cal"/></svg>Book a Free Discovery Call</a>
+        <a class="btn btn-white" href="#audit">Get LinkedIn Audit <svg class="icon" style="font-size:12px"><use href="#i-arrow"/></svg></a>
+      </div>
+      <div class="proof">
+        <div class="avatars">
+          <b style="background:#dce2f7;color:var(--primary)">JD</b>
+          <b style="background:#d6e3ff;color:var(--primary)">SM</b>
+          <b style="background:#d8e0f2;color:#575f6e">AR</b>
+          <b style="background:#d8e2ff;color:#004ba4">KL</b>
+        </div>
+        <div>
+          <div class="stars">
+            <svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg>
+            <strong>5.0</strong>
+          </div>
+          <small>Trusted by 100+ Founders &amp; VCs</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="portrait">
+        <div class="ph"><img src="https://www.figma.com/api/mcp/asset/e91a87f5-8849-4aaf-88e8-870ff2711072/c7622.png" alt="Elena Vance – Elite LinkedIn Growth Strategist" onerror="this.style.display='none'"></div>
+        <div class="float f1">
+          <div class="f-ic" style="background:var(--chip)"><svg class="icon"><use href="#i-trend"/></svg></div>
+          <div><small>Total Reach</small><div class="row"><b>1M+</b><span>+340% YoY</span></div></div>
+        </div>
+        <div class="float f2">
+          <div class="f-ic" style="background:#d8e2ff"><svg class="icon"><use href="#i-verified"/></svg></div>
+          <div><b>100+ Execs Coached</b><span>SaaS, VCs &amp; Consultancies</span></div>
+        </div>
+        <div class="float f3"><svg class="icon" style="font-size:13px"><use href="#i-bolt"/></svg>500+ Posts • 4.8% Avg CTR</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. Achievements & social proof -->
+<section class="metrics">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow">Track Record</div>
+      <h2 class="h2">Results Built Through Strategy</h2>
+      <p class="lead">Measurable authority, predictable client inbound, and compounding industry reputation.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="card stat"><svg class="icon ic"><use href="#i-people"/></svg><div><b>100+</b><h3>Professionals Guided</h3><p>Founders, CxOs, Tech Leaders across 14 countries.</p></div></div>
+      <div class="card stat"><svg class="icon ic"><use href="#i-eye"/></svg><div><b>1M+</b><h3>Content Impressions</h3><p>Generated purely organically across managed client profiles.</p></div></div>
+      <div class="card stat"><svg class="icon ic"><use href="#i-doc"/></svg><div><b>500+</b><h3>High-Converting Posts</h3><p>Researched, structured, ghostwritten, and published.</p></div></div>
+      <div class="card stat"><svg class="icon ic"><use href="#i-speed"/></svg><div><b>90%</b><h3>Inbound Velocity</h3><p>Clients report inbound enterprise DMs within 45 days.</p></div></div>
+    </div>
+    <div class="logos">
+      <small>Trusted by executives from leading ecosystems</small>
+      <div class="logo-row">
+        <span>Stripe <em>Alumni</em></span>
+        <span style="font-weight:800">SEQUOIA <em class="blue">backed</em></span>
+        <span style="letter-spacing:-1.2px">Y COMBINATOR</span>
+        <span class="forbes">Forbes <u>30U30</u></span>
+        <span>TECHSTARS</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. About / Pillars -->
+<section class="about" id="services">
+  <div class="container about-grid">
+    <div class="about-left">
+      <div class="why">
+        <div class="eyebrow b">Why ScalePulse</div>
+        <h3>“Most LinkedIn profiles are digital ghost towns. We turn yours into an inbound magnet.”</h3>
+        <p>High-value buyers do not purchase from anonymous logos. They buy from founders with clear philosophies, credible track records, and commanding points of view. We systematize your authentic authority into high-leverage business distribution.</p>
+        <div class="cred">
+          <div><svg class="icon"><use href="#i-star"/></svg>LinkedIn Top Voice Nominee</div>
+          <div><svg class="icon"><use href="#i-pen"/></svg>Ghostwriter for Series A+ Founders</div>
+          <div><svg class="icon"><use href="#i-trend"/></svg>Zero Ad Spend Organic Authority</div>
+        </div>
+        <a class="btn btn-primary" href="#assessment">Schedule Strategy Call <svg class="icon" style="font-size:14px"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="head">
+        <div class="eyebrow">Services &amp; Pillars</div>
+        <h2 class="h2">Five Pillars of Executive Influence</h2>
+      </div>
+      <div class="card pillar"><div class="pi"><svg class="icon"><use href="#i-target"/></svg></div><div><h4>1. Strategic Positioning</h4><p>We hone your unique market thesis, identify whitespace your competitors ignore, and rewrite your primary bio and hooks so you immediately stand apart.</p></div></div>
+      <div class="card pillar"><div class="pi"><svg class="icon"><use href="#i-brush"/></svg></div><div><h4>2. Personal Branding</h4><p>Comprehensive visual identity including high-definition banner design, visual color schemes, signature typography, and bespoke brand voice guidelines.</p></div></div>
+      <div class="card pillar"><div class="pi"><svg class="icon"><use href="#i-doc"/></svg></div><div><h4>3. Content Systems</h4><p>Bi-weekly interview sprints transformed into viral long-form narratives, carousel breakdowns, and thought-leadership perspectives that build pipeline.</p></div></div>
+      <div class="card pillar"><div class="pi"><svg class="icon"><use href="#i-search"/></svg></div><div><h4>4. Profile Optimization</h4><p>Complete search optimization for targeted discovery keywords, an engineered featured section funnel, and clear conversion paths for prospective partners.</p></div></div>
+      <div class="card pillar"><div class="pi"><svg class="icon"><use href="#i-trend"/></svg></div><div><h4>5. Consistent Growth &amp; Engagement</h4><p>Targeted comment networking with tier-one industry peers, outbound engagement loops, and weekly algorithmic optimizations to maintain high momentum.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Lead magnet (form) -->
+<section class="lead-sec" id="assessment">
+  <div class="lead-card">
+    <div class="eyebrow b">Complimentary Opportunity Teardown</div>
+    <h2 class="h2">Get Your Free LinkedIn Growth Assessment</h2>
+    <p class="lead">Receive a personalized, actionable teardown of your headline, positioning, and top 3 content opportunities delivered in 24 hours.</p>
+    <form id="leadForm" novalidate>
+      <div class="row2">
+        <input class="input" type="text" id="name" name="name" placeholder="Your Full Name" autocomplete="name" required>
+        <input class="input" type="email" id="email" name="email" placeholder="Work Email Address" autocomplete="email" required>
+      </div>
+      <input class="input" type="tel" id="phone" name="phone" placeholder="Phone Number" autocomplete="tel" required>
+      <button class="submit" type="submit" id="submitBtn"><span id="btnText">Get My Free Assessment</span><svg class="icon" style="font-size:12px"><use href="#i-arrow"/></svg></button>
+      <div class="msg" id="formMsg" role="status" aria-live="polite"></div>
+    </form>
+    <div class="trust">
+      <span><svg class="icon"><use href="#i-checkc"/></svg>No Spam, Ever</span>
+      <span><svg class="icon"><use href="#i-checkc"/></svg>100% Personalized Insights</span>
+      <span><svg class="icon"><use href="#i-checkc"/></svg>Actionable 5-Point Recommendations</span>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ₹1 audit offer -->
+<section class="offer" id="audit">
+  <div class="offer-card">
+    <div class="offer-left">
+      <span class="tag">⚡ Limited Executive Special Offer</span>
+      <h2>LinkedIn Audit Session for Just ₹1</h2>
+      <p>Experience our strategic rigor firsthand with a live 20-minute profile teardown and growth blueprint for nominal commitment.</p>
+      <ul>
+        <li><svg class="icon"><use href="#i-checkc"/></svg>Comprehensive Profile &amp; Banner Review</li>
+        <li><svg class="icon"><use href="#i-checkc"/></svg>Content &amp; Hook Performance Audit</li>
+        <li><svg class="icon"><use href="#i-checkc"/></svg>Executive Branding &amp; Bio Feedback</li>
+        <li><svg class="icon"><use href="#i-checkc"/></svg>90-Day Step-by-Step Growth Roadmap</li>
+        <li><svg class="icon"><use href="#i-checkc"/></svg>Inbound Visibility &amp; Network Conversion Levers</li>
+      </ul>
+    </div>
+    <div class="price">
+      <small>Nominal Entry Barrier</small>
+      <div class="amt"><b>₹1</b><s>₹4,999</s></div>
+      <span>Live 1-on-1 strategy teardown call</span>
+      <div class="count"><small>Offer expires in:</small><b>02d : 14h : 38m</b></div>
+      <a class="btn" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">Book My ₹1 Audit Now</a>
+      <div class="instant"><svg class="icon"><use href="#i-bolt"/></svg>Instant Confirmation</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. Process -->
+<section class="process">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow">The Method</div>
+      <h2 class="h2">How We Grow Your LinkedIn</h2>
+      <p class="lead">A battle-tested 4-step framework from audit to automated inbound lead generation.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Positioning</h3><p>Deep-dive discovery, target audience mapping, and defining your non-negotiable points of authority.</p></div>
+      <div class="step"><div class="n">02</div><h3>Strategy</h3><p>Custom content pillars, weekly cadence, and profile conversion funnel architecture.</p></div>
+      <div class="step"><div class="n">03</div><h3>Content Creation</h3><p>DFY executive ghostwriting, compelling visual carousels, and high-impact thought leadership pieces.</p></div>
+      <div class="step"><div class="n">04</div><h3>Growth &amp; Management</h3><p>Proactive engagement loops, network expansion, weekly analytics teardowns, and pipeline tracking.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. Testimonials -->
+<section class="testi" id="testimonials">
+  <div class="container">
+    <div class="sec-head">
+      <div class="eyebrow">Client Proof</div>
+      <h2 class="h2">Success Stories From Professionals</h2>
+      <p class="lead">See how founders and executives built undeniable authority and booked high-ticket pipeline.</p>
+    </div>
+    <div class="t-grid">
+      <article class="review">
+        <div><div class="stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+        <blockquote>“Elena completely restructured my LinkedIn. We went from 2,000 to 24,000 followers in 4 months, generating $85k in qualified SaaS inbound.”</blockquote></div>
+        <div class="who"><i style="background:#d6e3ff;color:var(--primary)">MV</i><div><b>Marcus Vance</b><span>Founder &amp; CEO at CloudMetric</span></div></div>
+      </article>
+      <article class="review">
+        <div><div class="stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+        <blockquote>“The ₹1 audit opened my eyes to how much money I was leaving on the table. Her ghostwriting captured my authentic voice immediately.”</blockquote></div>
+        <div class="who"><i style="background:#d8e0f2;color:#575f6e">PS</i><div><b>Priya Sharma</b><span>Executive Coach &amp; Keynote Speaker</span></div></div>
+      </article>
+      <article class="review">
+        <div><div class="stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+        <blockquote>“I closed two enterprise advisory deals directly from LinkedIn DMs within 30 days of implementing their content system.”</blockquote></div>
+        <div class="who"><i style="background:#d8e2ff;color:#004ba4">DM</i><div><b>David Miller</b><span>Fintech Consultant</span></div></div>
+      </article>
+      <article class="review">
+        <div><div class="stars"><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg><svg class="icon"><use href="#i-star"/></svg></div>
+        <blockquote>“ScalePulse took the stress out of personal branding. I spend 20 minutes a week reviewing drafts, and our inbound leads 5x'd.”</blockquote></div>
+        <div class="who"><i style="background:#dce2f7;color:var(--ink)">SJ</i><div><b>Sarah Jenkins</b><span>Agency Partner</span></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section class="faq" id="faqs">
+  <div class="faq-wrap">
+    <div class="sec-head" style="max-width:none">
+      <div class="eyebrow">Common Questions</div>
+      <h2 class="h2">Frequently Asked Questions</h2>
+      <p class="lead">Everything you need to know about our executive personal brand acceleration.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">1. Who is this service for?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>Founders, executives, consultants, and agency owners who want to turn their LinkedIn presence into a consistent source of high-ticket inbound.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">2. Do I need an audience already?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>No. We work with profiles starting from zero visibility as well as established ones. Positioning and content strategy come first, then audience growth.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">3. Will you write content for me?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>Yes. Our done-for-you ghostwriting captures your authentic voice from short interview sprints, and you only review drafts before they go live.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">4. How long does growth take?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>Most clients see meaningful traction and their first inbound conversations within about 45 days, with results compounding over the following months.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">5. Do I need to post daily?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>No. We build a sustainable weekly cadence around a few high-impact posts, backed by proactive engagement on your behalf.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">6. What makes your approach different?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>We combine strategic positioning, personal branding, content systems, profile optimization, and ongoing growth management into one cohesive system instead of isolated tactics.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" aria-expanded="false">7. Is the ₹1 audit worth it?<svg class="icon"><use href="#i-chev"/></svg></button><div class="faq-a"><div><p>It is a live 20-minute teardown of your profile, content, and bio with a 90-day growth roadmap, so you can experience our approach before committing to anything further.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Final CTA -->
+<section class="final">
+  <div class="box">
+    <div class="eyebrow b">Claim Your Category</div>
+    <h2>Ready to Turn Your Profile Into Your Most Valuable Asset?</h2>
+    <p class="lead">Join leading founders, partners, and operators who have transformed their personal brand into compounding organic inbound.</p>
+    <a class="btn" href="#assessment"><svg class="icon" style="font-size:17px"><use href="#i-cal"/></svg>Schedule Your Strategy Call</a>
+    <small>Zero hard sales. Just actionable strategic guidance.</small>
+  </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="brand">
+      <img src="https://www.figma.com/api/mcp/asset/40cad745-064a-4943-92f5-35b3df4332a3/fbc94.png" alt="" onerror="this.style.display='none'">
+      <span>ScalePulse Advisory</span>
+    </div>
+    <p>© 2025 ScalePulse. Executive Authority &amp; LinkedIn Personal Brand Acceleration.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx_VANwR-iNmsLBAkP3iIloK3hsYmI2C5dtB5OGMH3F-xTTYSS9orWLcEV9tJQpR_Yg/exec";
+
+  var form = document.getElementById("leadForm");
+  var btn = document.getElementById("submitBtn");
+  var btnText = document.getElementById("btnText");
+  var msg = document.getElementById("formMsg");
+
+  function setMsg(type, text) {
+    msg.className = "msg " + type;
+    msg.textContent = text;
+  }
+  function setBusy(busy) {
+    btn.disabled = busy;
+    btnText.textContent = busy ? "Sending…" : "Get My Free Assessment";
+  }
+  function showSuccess() {
+    setBusy(false);
+    form.reset();
+    setMsg("ok", "Thank you! Your request has been received. We'll be in touch within 24 hours.");
+  }
+  function showError() {
+    setBusy(false);
+    setMsg("err", "Something went wrong. Please check your connection and try again.");
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    var phone = form.phone.value.trim();
+
+    if (!name || !email || !phone) { setMsg("err", "Please fill in your name, email and phone number."); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setMsg("err", "Please enter a valid email address."); return; }
+    if (phone.replace(/\D/g, "").length < 7) { setMsg("err", "Please enter a valid phone number."); return; }
+
+    setMsg("", ""); msg.className = "msg";
+    setBusy(true);
+
+    var url = SCRIPT_URL + "?" + new URLSearchParams({ name: name, email: email, phone: phone });
+    fetch(url, { method: "GET", mode: "no-cors" })
+      .then(function () { showSuccess(); })
+      .catch(function () { showError(); });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll(".faq-q").forEach(function (q) {
+    q.addEventListener("click", function () {
+      var item = q.parentElement;
+      var open = item.classList.toggle("open");
+      q.setAttribute("aria-expanded", open ? "true" : "false");
+    });
+  });
+})();
+</script>
+</body>
+</html>
